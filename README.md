@@ -1,4 +1,4 @@
-# Udacity Item Catalog
+# Item Catalog
 
 ## Project Overview
 A web application that provides a list of items within a variety of categories and integrate third party user registration with (**Google account**) and authentication.registered users have the ability to add, edit, and delete their own items.Using Flask Python framework.
@@ -31,14 +31,17 @@ Navigate to the directory that containing the **vagrantfile**
 3. Navigate to catalog directory:
  - `cd /vagrant/catalog`
 
-4. Run the following command to setup the and create the database:
+4. Run the following command to install need flask libraries:
+ - `sudo ./pg_config.sh`
+
+5. Run the following command to setup the and create the database:
  - `python database_setup.py`
 
-5. Run the following command to insert some data into the database:
+6. Run the following command to insert some data into the database:
  - `python lotsofmenus.py`
 
-7. Run Python Program **loganalysis.py** and log analysis will be printed
- - `python2 loganalysis.py`
+7. Run Python Program **application.py** and log analysis will be printed
+ - `python2 application.py`
 
 8. Finally you can visit the web App using your browser [localhost:5000](http://localhost:5000/).
 
