@@ -2,7 +2,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from database_setup import Base, Category, CategoryItem, User
 
-engine = create_engine('sqlite:///catalog.db')
+engine = create_engine('sqlite:///itemcatalog.db')
 
 # Clear database
 Base.metadata.drop_all(engine)
@@ -89,7 +89,4 @@ Category3 = Category(user_id=1, name="Aves")
 session.add(Category3)
 session.commit()
 
-print "done"
-
-print "done"
 print "done"
