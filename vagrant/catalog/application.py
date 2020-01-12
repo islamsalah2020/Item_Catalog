@@ -50,7 +50,7 @@ def showCategories():
 	# Get lastest 5 category items added
 	categoryItems = session.query(CategoryItem).all()
 
-	return render_template('categories.html', categories = categories, categoryItems = categoryItems)
+	return render_template('categories.html', categories = session.query(Category).all(), categoryItems = session.query(CategoryItem).all())
 
 
 # Show selected category and it's items
@@ -123,7 +123,6 @@ def editCategoryItem(catalog_id, item_id):
 		return render_template('editCategoryItem.html', categories = categories, categoryItem = categoryItem)
 
 # Delete Category Item
-@app.route('/login')
 @app.route('/catalog/<int:catalog_id>/items/<int:item_id>/delete', methods=['GET', 'POST'])
 def deleteCategoryItem(catalog_id, item_id):
 	# Check if user is logged in
@@ -212,12 +211,12 @@ def logout():
 	del login_session['email']
 	del login_session['picture']
 	del login_session['user_id']
-	del login_session['provider']
+	
 
 	return redirect(url_for('showCategories'))
 
 
-
+@app.route('/gconnect', methods=['POST'])
 def gconnect():
 	# Validate anti-forgery state token
 	if request.args.get('state') != login_session['state']:
@@ -286,15 +285,17 @@ def gconnect():
 	login_session['username'] = data['name']
 	login_session['picture'] = data['picture']
 	login_session['email'] = data['email']
-	login_session['provider'] = 'google'
+	
 
 	# See if user exists
 	user_id = getUserID(data["email"])
 	if not user_id:
 	    user_id = createUser(login_session)
 	login_session['user_id'] = user_id
-
-	return "Login Successful"
+	output = ''
+    output += '<h1>Welcome, '
+	output += login_session['username']
+	return output
 
 @app.route('/gdisconnect')
 def gdisconnect():
@@ -315,6 +316,10 @@ def gdisconnect():
 	    response = make_response(json.dumps('Failed to revoke token for given user.'), 400)
 	    response.headers['Content-Type'] = 'application/json'
 	    return response
+	else:
+		response = make_response(json.dumps('disconnected'))
+		response.headers['Content-Type'] = 'application/json'
+		return response	
 
 
 if __name__ == '__main__':
