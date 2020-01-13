@@ -28,7 +28,7 @@ for o in objects:
     session.delete(o)
 
 
-objects = session.query(CategoryItem).()
+objects = session.query(CategoryItem).all()
 for o in objects:
     session.delete(o)
 
