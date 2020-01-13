@@ -248,6 +248,13 @@ def showCategoryJSON(catalog_id):
             categoryItem.serialize for categoryItem in categoryItems])
 
 
+@app.route('/catalog/<int:catalog_id>/items/<int:item_id>/JSON')
+def showCategoryItemJSON(item_id):
+    categoryItem = session.query(CategoryItem).filter_by(
+        id=item_id).first()
+    return jsonify(categoryItems=[categoryItem.serialize])
+
+
 @app.route('/login')
 def login():
     # Create anti-forgery state token

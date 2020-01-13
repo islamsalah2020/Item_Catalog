@@ -43,7 +43,7 @@ Navigate to the directory that containing the **vagrantfile**
 7. Run Python Program **application.py** and log analysis will be printed
  - `python2 application.py`
 
-8. Finally you can visit the web App using your browser [localhost:5000](http://localhost:5000/).
+8. Finally you can visit the web App using your browser [localhost:5000](http://localhost:5000/),
 
 
 

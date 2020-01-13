@@ -15,7 +15,6 @@ DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
 
-
 print "start"
 
 users = session.query(User).all()
