@@ -38,7 +38,7 @@ Navigate to the directory that containing the **vagrantfile**
  - `python database_setup.py`
 
 6. Run the following command to insert some data into the database:
- - `python lotsofmenus.py`
+ - `python dummydata.py`
 
 7. Run Python Program **application.py** and log analysis will be printed
  - `python2 application.py`
